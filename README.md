@@ -25,39 +25,39 @@ Millions of Americans are eligible for government benefits but don't know it, or
                       │ WebSocket + REST
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    FastAPI Server (web/server.py)                        │
+│                    FastAPI Server (web/server.py)                       │
 │         GET /  |  POST /upload  |  WebSocket /ws/chat                   │
 └─────────────────────┬───────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                 Orchestrator Agent (Nova 2 Lite)                         │
+│                 Orchestrator Agent (Nova 2 Lite)                        │
 │              Routes conversations to sub-agent tools                    │
 │                                                                         │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐   │
-│  │   Intake     │ │  Eligibility │ │  Action Plan │ │  Document    │   │
-│  │   Interview  │ │  Checker     │ │  w/ Cross-   │ │  Analyzer    │   │
-│  │ (sub-agent)  │ │(rules engine)│ │  Program Opt │ │ (multimodal) │   │
-│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘   │
-│  ┌──────────────┐ ┌──────────────┐                                     │
-│  │  Benefits KB │ │  Proactive   │                                     │
-│  │  (semantic)  │ │  Follow-Up   │                                     │
-│  └──────┬───────┘ └──────────────┘                                     │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐    │
+│  │   Intake     │ │  Eligibility │ │  Action Plan │ │  Document    │    │
+│  │   Interview  │ │  Checker     │ │  w/ Cross-   │ │  Analyzer    │    │
+│  │ (sub-agent)  │ │(rules engine)│ │  Program Opt │ │ (multimodal) │    │
+│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘    │
+│  ┌──────────────┐ ┌──────────────┐                                      │
+│  │  Benefits KB │ │  Proactive   │                                      │
+│  │  (semantic)  │ │  Follow-Up   │                                      │
+│  └──────┬───────┘ └──────────────┘                                      │
 └─────────┼───────────────────────────────────────────────────────────────┘
           │                       │
           ▼                       ▼
 ┌─────────────────────┐ ┌────────────────────────────────────────────────┐
 │  Nova Embed (RAG)   │ │           Nova 2 Lite (Reasoning)              │
 │  Semantic search    │ │  Conversation, tool use, document analysis     │
-│  amazon.nova-embed  │ │  global.amazon.nova-2-lite-v1:0               │
-│  -multimodal-v1:0   │ │                                               │
+│  amazon.nova-embed  │ │  global.amazon.nova-2-lite-v1:0                │
+│  -multimodal-v1:0   │ │                                                │
 └─────────────────────┘ └────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         Amazon Bedrock                                   │
-│  Nova 2 Lite: reasoning, conversation, tool use, document analysis     │
-│  Nova Multimodal Embedding: semantic search over benefits KB (RAG)     │
+│                         Amazon Bedrock                                  │
+│  Nova 2 Lite: reasoning, conversation, tool use, document analysis      │
+│  Nova Multimodal Embedding: semantic search over benefits KB (RAG)      │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
