@@ -1,0 +1,203 @@
+[
+  {
+    "program_id": "snap",
+    "chunks": [
+      {
+        "title": "SNAP Overview",
+        "text": "The Supplemental Nutrition Assistance Program (SNAP), formerly known as Food Stamps, provides monthly food benefits loaded onto an EBT (Electronic Benefits Transfer) card. You can use it at grocery stores, farmers markets, and some online retailers like Amazon and Walmart to buy food and non-alcoholic beverages. SNAP does not cover hot prepared foods, alcohol, tobacco, vitamins, medicine, or household supplies."
+      },
+      {
+        "title": "SNAP Eligibility",
+        "text": "To qualify for SNAP, your gross monthly income must be at or below 130% of the Federal Poverty Level. For a family of 3 in 2025, that's about $2,887 per month or $34,645 per year. Most households must also meet a net income test of 100% FPL after deductions. Countable assets must be below $2,750 ($4,250 if a household member is elderly or disabled). Most states have eliminated the asset test through broad-based categorical eligibility."
+      },
+      {
+        "title": "SNAP Application Tips",
+        "text": "Apply online through your state's benefits portal (like BenefitsCal.com in California or ACCESS Florida). Bring photo ID, proof of income for all household members (pay stubs, tax returns), proof of housing costs (lease, mortgage statement), and Social Security numbers. If you're in urgent need, ask for expedited benefits — if your monthly income is below $150 or your rent exceeds your income, you can get benefits within 7 days instead of the usual 30."
+      },
+      {
+        "title": "SNAP Common Mistakes",
+        "text": "Common mistakes when applying for SNAP: not reporting all household members (everyone who buys and prepares food together counts), forgetting to include deductions like child care costs and medical expenses for elderly/disabled members, missing the phone interview (most states require one), and not reporting changes within 10 days. If you're a college student, you may still qualify if you work at least 20 hours per week or participate in a work-study program."
+      }
+    ]
+  },
+  {
+    "program_id": "medicaid",
+    "chunks": [
+      {
+        "title": "Medicaid Overview",
+        "text": "Medicaid provides free or very low-cost health coverage including doctor visits, hospital stays, prescriptions, mental health services, lab tests, X-rays, and preventive care. In states that expanded Medicaid under the ACA, adults under 65 with incomes up to 138% of the Federal Poverty Level qualify. Coverage includes dental and vision in many states. There are no premiums for most beneficiaries and copays are minimal."
+      },
+      {
+        "title": "Medicaid Application Tips",
+        "text": "Apply through Healthcare.gov or your state Medicaid office. In California, apply at BenefitsCal.com or CoveredCA.com. You'll need proof of identity, income, and residency. Medicaid has no asset test in most expansion states. If you're pregnant, coverage often starts immediately and includes prenatal care, delivery, and 12 months of postpartum coverage. If denied, you have the right to appeal — many initial denials are overturned."
+      },
+      {
+        "title": "Medicaid and Other Programs",
+        "text": "Being enrolled in Medicaid can automatically qualify you for other programs. In many states, Medicaid enrollment gives you categorical eligibility for SNAP, meaning your income is automatically verified. Medicaid recipients also qualify for the Lifeline phone/internet discount and may get priority for LIHEAP energy assistance. If you have children, they may qualify for CHIP even if your income is too high for adult Medicaid."
+      }
+    ]
+  },
+  {
+    "program_id": "chip",
+    "chunks": [
+      {
+        "title": "CHIP Overview",
+        "text": "The Children's Health Insurance Program (CHIP) provides low-cost health coverage for children under 19 in families that earn too much for Medicaid but can't afford private insurance. Coverage includes routine check-ups, immunizations, doctor visits, prescriptions, dental and vision care, hospital care, and mental health services. Premiums and copays are minimal — usually $0-50 per month depending on income."
+      },
+      {
+        "title": "CHIP Eligibility",
+        "text": "Income limits for CHIP vary by state but typically cover children in families earning up to 200-300% of the Federal Poverty Level. In many states, a family of 4 earning up to $64,000-$96,000 per year may qualify. Apply through Healthcare.gov or your state's Medicaid/CHIP office. Some states have a single application for both Medicaid and CHIP. There is no asset test for CHIP in most states."
+      }
+    ]
+  },
+  {
+    "program_id": "wic",
+    "chunks": [
+      {
+        "title": "WIC Overview",
+        "text": "The Women, Infants, and Children (WIC) program provides nutritious foods, nutrition education, breastfeeding support, and healthcare referrals. Eligible participants include pregnant women, new mothers (up to 6 months postpartum, or 12 months if breastfeeding), infants, and children under age 5. WIC provides specific healthy foods like milk, eggs, cheese, cereal, fruits, vegetables, and infant formula."
+      },
+      {
+        "title": "WIC Eligibility and Application",
+        "text": "To qualify for WIC, your income must be at or below 185% of the Federal Poverty Level. If you already receive SNAP, Medicaid, or TANF, you automatically meet the income requirement. You must also be at nutritional risk, which is assessed at your WIC appointment. Apply by contacting your local WIC office — appointments are usually available within 1-2 weeks. Bring proof of identity, income, and address. Immigration status does not affect WIC eligibility."
+      },
+      {
+        "title": "WIC Tips",
+        "text": "WIC benefits are time-sensitive: children age out at their 5th birthday, so apply as early as possible to maximize months of benefits. Many WIC offices now use eWIC cards that work like debit cards at the grocery store. WIC also provides free breastfeeding support, including breast pumps. Fathers and guardians can apply on behalf of children. If you're pregnant, apply as soon as possible — WIC provides prenatal nutrition support."
+      }
+    ]
+  },
+  {
+    "program_id": "eitc",
+    "chunks": [
+      {
+        "title": "EITC Overview",
+        "text": "The Earned Income Tax Credit (EITC) is a refundable tax credit for low-to-moderate income workers. It can result in a significant tax refund even if you owe no taxes. For 2025, the maximum credit is $7,830 with 3 or more qualifying children, $6,960 with 2 children, $4,213 with 1 child, or $632 with no children. You must have earned income from wages or self-employment to qualify."
+      },
+      {
+        "title": "EITC Application Tips",
+        "text": "Claim the EITC by filing a federal tax return (Form 1040) even if you're not otherwise required to file. Use IRS Free File at irs.gov/freefile if your income is under $84,000 — it's completely free. You can also get free help at a VITA (Volunteer Income Tax Assistance) site; call 211 to find one near you. Avoid paid tax preparers who charge a percentage of your refund — that's money you're giving away unnecessarily."
+      },
+      {
+        "title": "EITC Common Mistakes",
+        "text": "Common EITC mistakes: not filing a return because you think you don't owe taxes (you miss the refund!), using 'married filing separately' status (disqualifies you from EITC), not claiming all qualifying children, having too much investment income (over $11,600 disqualifies you), and not filing within 3 years of the tax year (you lose the refund permanently). Self-employed workers can claim EITC too — keep records of your business income and expenses."
+      }
+    ]
+  },
+  {
+    "program_id": "child_tax_credit",
+    "chunks": [
+      {
+        "title": "Child Tax Credit Overview",
+        "text": "The Child Tax Credit provides up to $2,000 per qualifying child under age 17. Up to $1,700 is refundable, meaning you can get it as a refund even if you don't owe taxes. The credit begins to phase out at $200,000 for single filers and $400,000 for married filing jointly. Qualifying children must have a Social Security number and be your dependent."
+      },
+      {
+        "title": "Child Tax Credit Tips",
+        "text": "The Child Tax Credit is claimed on your annual tax return. If you have both EITC and Child Tax Credit, file your return to claim both — they stack. Make sure each qualifying child has a Social Security number (not just an ITIN). You can claim the credit for adopted children, stepchildren, and foster children who lived with you for more than half the year."
+      }
+    ]
+  },
+  {
+    "program_id": "liheap",
+    "chunks": [
+      {
+        "title": "LIHEAP Overview",
+        "text": "The Low Income Home Energy Assistance Program (LIHEAP) helps pay heating and cooling bills for low-income households. Benefits range from $500 to $2,000+ per year depending on your state, household size, and energy costs. Some states also offer weatherization assistance that permanently reduces energy bills through insulation, window sealing, and efficient appliance upgrades."
+      },
+      {
+        "title": "LIHEAP Application Tips",
+        "text": "LIHEAP funding is limited and distributed on a first-come, first-served basis — apply early in the season. Contact your local Community Action Agency or call 211 to apply. Bring your most recent utility bill, proof of income, and ID. Priority is given to households with elderly members (60+), disabled members, or children under 6. Some states have separate heating and cooling assistance seasons. Also ask about the Weatherization Assistance Program, which can permanently lower your bills."
+      }
+    ]
+  },
+  {
+    "program_id": "section8",
+    "chunks": [
+      {
+        "title": "Section 8 Overview",
+        "text": "The Housing Choice Voucher Program (Section 8) helps low-income families, the elderly, and people with disabilities afford rental housing. The voucher covers the difference between 30% of your adjusted income and the fair market rent for your area. You choose your own housing — any landlord who accepts vouchers, including apartments, houses, and townhomes."
+      },
+      {
+        "title": "Section 8 Application Tips",
+        "text": "Section 8 has very long waitlists — typically 1 to 3+ years, and some areas are 5+ years. Waitlists open infrequently and close quickly, sometimes within days. Check your local Public Housing Authority (PHA) website regularly or call them. You can apply to multiple PHAs in different cities or counties. Preference is usually given to veterans, people with disabilities, the elderly, and families with children. When the waitlist opens, apply immediately — don't wait."
+      },
+      {
+        "title": "Section 8 Tips for Success",
+        "text": "While waiting for Section 8, look into other housing assistance: Emergency Rental Assistance programs, Rapid Rehousing programs, and local housing trust funds. If you get a voucher, start looking for housing right away — you typically have 60-120 days to find a landlord who accepts it. Maintain your good standing by reporting income changes, keeping the unit in good condition, and recertifying annually."
+      }
+    ]
+  },
+  {
+    "program_id": "tanf",
+    "chunks": [
+      {
+        "title": "TANF Overview",
+        "text": "Temporary Assistance for Needy Families (TANF) provides monthly cash assistance to low-income families with children. Benefits vary widely by state — from $200/month in some states to over $1,000/month in others. TANF also provides job training, child care assistance, and transportation help. There is a 60-month (5-year) federal lifetime limit on benefits, though some states have shorter limits."
+      },
+      {
+        "title": "TANF Application Tips",
+        "text": "Apply through your county social services office or online. TANF has work requirements — most adults must participate in work activities (job search, training, community service) for 20-30 hours per week. Exemptions exist for parents of infants, people with disabilities, and domestic violence survivors. In California, CalWORKs is the state TANF program, with benefits of $900-$1,500/month depending on family size."
+      }
+    ]
+  },
+  {
+    "program_id": "pell_grant",
+    "chunks": [
+      {
+        "title": "Pell Grant Overview",
+        "text": "The Federal Pell Grant provides up to $7,395 per year for undergraduate students with financial need. Unlike loans, Pell Grants do not need to be repaid. The amount depends on your financial need, cost of attendance, and enrollment status (full-time or part-time). Pell Grants can be used for tuition, fees, books, housing, and other educational expenses."
+      },
+      {
+        "title": "Pell Grant Application Tips",
+        "text": "Apply by completing the FAFSA (Free Application for Federal Student Aid) at studentaid.gov. The FAFSA opens October 1 each year — apply early for maximum aid. You'll need your Social Security number, tax returns, and bank statements. Students from families earning under $60,000 typically qualify. The FAFSA also determines eligibility for state grants, work-study, and institutional aid, so it's worth filling out even if you're unsure about Pell eligibility."
+      }
+    ]
+  },
+  {
+    "program_id": "ssi",
+    "chunks": [
+      {
+        "title": "SSI Overview",
+        "text": "Supplemental Security Income (SSI) provides monthly cash payments to people who are aged 65 or older, blind, or disabled and have limited income and resources. The federal benefit rate is up to $943/month for individuals and $1,415/month for couples in 2025. Many states add a supplement. SSI recipients automatically qualify for Medicaid in most states."
+      },
+      {
+        "title": "SSI Application Tips",
+        "text": "Apply at your local Social Security office, by phone (1-800-772-1213), or online at ssa.gov for disability claims. The disability determination process can take 3-6 months, and many initial applications are denied. If denied, appeal immediately — over 50% of appeals are successful, especially with legal help. Free legal aid organizations can help with SSI appeals. Keep detailed medical records and get statements from your doctors about how your condition limits your ability to work."
+      }
+    ]
+  },
+  {
+    "program_id": "lifeline",
+    "chunks": [
+      {
+        "title": "Lifeline Overview",
+        "text": "The Lifeline program provides a $9.25/month discount on phone or internet service for qualifying low-income households. You can choose either a landline, cell phone, or internet discount — one per household. Some carriers offer free cell phones with limited minutes and data through Lifeline. The program is available nationwide."
+      },
+      {
+        "title": "Lifeline Eligibility",
+        "text": "You qualify for Lifeline if your income is at or below 135% of the Federal Poverty Level, or if you participate in SNAP, Medicaid, SSI, Federal Public Housing Assistance, or Veterans Pension. Only one Lifeline benefit per household is allowed. Apply at lifelinesupport.org or through participating carriers. Proof of income or program participation is required."
+      }
+    ]
+  },
+  {
+    "program_id": "general",
+    "chunks": [
+      {
+        "title": "How to Find Help — 211",
+        "text": "Dial 211 from any phone to connect with local community resources. 211 can help you find food banks, emergency shelter, utility assistance, mental health services, and more. It's free, confidential, and available 24/7 in most areas. You can also visit 211.org to search online. If you're in crisis — facing eviction, domestic violence, or hunger — call 211 first."
+      },
+      {
+        "title": "Documents to Gather Before Applying",
+        "text": "Before applying for benefits, gather these documents to speed up the process: government-issued photo ID (driver's license, state ID, or passport), Social Security cards for all household members, proof of income (recent pay stubs, tax return, or letter from employer), proof of address (utility bill, lease agreement, or mail), birth certificates for children, and bank statements (if required). Having these ready can prevent delays."
+      },
+      {
+        "title": "What If You're Denied Benefits",
+        "text": "If your application is denied, don't give up. You have the right to appeal almost every denial. Common reasons for denial include missing documents, errors in the application, or misunderstandings about income. Request a fair hearing within the deadline (usually 30-90 days). Free legal aid organizations in your area can help with appeals. Many denials are overturned on appeal — especially for SSI disability claims."
+      },
+      {
+        "title": "Benefits for Immigrants",
+        "text": "Immigration status affects benefit eligibility differently for each program. Qualified immigrants (green card holders, refugees, asylees) can access most federal programs, sometimes after a 5-year waiting period. Undocumented immigrants are generally not eligible for federal benefits, but some state programs are available regardless of status — for example, California's Medi-Cal covers all income-eligible residents. WIC is available regardless of immigration status. Applying for benefits does NOT trigger immigration enforcement and generally does not affect green card applications."
+      }
+    ]
+  }
+]

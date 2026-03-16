@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BenefitsNavigator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- ===== LEFT: Chat Pane ===== -->
+    <div class="chat-pane">
+      <header class="chat-header">
+        <div class="logo-group">
+          <div class="logo-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+              <path d="M10 22V14a6 6 0 0 1 12 0v8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="16" cy="12" r="2" fill="#fff"/>
+              <path d="M12 18h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                  <stop stop-color="#0F6E56"/>
+                  <stop offset="1" stop-color="#14A47C"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h1 class="logo-text">BenefitsNavigator</h1>
+          <span class="model-badge">Nova 2 Lite</span>
+        </div>
+        <button class="benefits-toggle" id="benefitsToggle" aria-label="Toggle benefits panel">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="16" height="14" rx="2"/>
+            <line x1="12" y1="3" x2="12" y2="17"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="messages" id="messages">
+        <!-- Welcome message -->
+        <div class="message agent-message welcome-msg" style="animation-delay:0.1s">
+          <div class="message-content">
+            <p><strong>Welcome to BenefitsNavigator!</strong></p>
+            <p>I can help you discover government benefits you may be eligible for, including food assistance, healthcare, housing, tax credits, and more.</p>
+            <p>Tell me a bit about your situation and I'll identify programs you might qualify for and create an action plan to apply.</p>
+            <p class="disclaimer">This tool provides informational guidance only. Final eligibility is determined by the administering agency.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="typing-label">BenefitsNavigator is thinking...</span>
+      </div>
+
+      <!-- File preview bar -->
+      <div class="file-preview-bar" id="filePreviewBar"></div>
+
+      <!-- Input bar -->
+      <div class="input-bar">
+        <button class="btn-attach" id="btnAttach" aria-label="Attach file" title="Upload document (PDF, PNG, JPG)">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 10.3l-7.78 7.78a4.5 4.5 0 0 1-6.36-6.36l7.78-7.78a3 3 0 0 1 4.24 4.24l-7.07 7.07a1.5 1.5 0 0 1-2.12-2.12L13 6.34"/>
+          </svg>
+        </button>
+        <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" multiple hidden>
+        <textarea id="userInput" placeholder="Describe your situation or ask about benefits..." rows="1"></textarea>
+        <button class="btn-send" id="btnSend" aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT: Benefits Pane ===== -->
+    <div class="benefits-pane" id="benefitsPane">
+      <header class="benefits-header">
+        <h2>Eligible Benefits</h2>
+        <span class="count-badge" id="countBadge">0</span>
+      </header>
+
+      <div class="benefits-list" id="benefitsList">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" stroke="#ccc" stroke-width="2" stroke-dasharray="4 4"/>
+              <path d="M18 24h12M24 18v12" stroke="#ccc" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p>Chat with me to discover benefits you may qualify for</p>
+        </div>
+      </div>
+
+      <div class="benefits-footer" id="benefitsFooter" style="display:none">
+        <button class="btn-action-plan" id="btnActionPlan">Generate Action Plan</button>
+      </div>
+    </div>
+
+    <!-- Overlay for mobile benefits panel -->
+    <div class="benefits-overlay" id="benefitsOverlay"></div>
+  </div>
+
+  <!-- Drop zone overlay -->
+  <div class="drop-zone" id="dropZone">
+    <div class="drop-zone-content">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round">
+        <path d="M24 32V16M18 22l6-6 6 6"/>
+        <rect x="8" y="8" width="32" height="32" rx="8"/>
+      </svg>
+      <p>Drop documents here</p>
+      <span>PDF, PNG, or JPG</span>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
