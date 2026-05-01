@@ -1,5 +1,8 @@
 # BenefitsNavigator
 
+## Live link
+[Live Link](https://gbea-nova-ai.onrender.com)
+
 An agentic AI system that helps US citizens and residents discover government benefits they may be eligible for. Built on **AWS Bedrock** using **two Amazon Nova models** and the **Strands Agents SDK**:
 
 - **Amazon Nova 2 Lite** — reasoning, conversation, tool use, and multimodal document analysis
