@@ -9,6 +9,11 @@ to pass evals" hard constraint, fixing these is a separate explicit decision.
 
 ## Finding 001 — Vector store silently degrades to 0 embeddings (CRITICAL)
 
+- **Severity:** P0 — silent failure of a core feature; semantic retrieval contributes nothing.
+- **Status:** open
+- **Repro:** `python -m evals.runners.run_retrieval_evals` — observe P@1 = P@3 = P@5 = R@5 = MRR = Hit@5 = 0.00 across all 30 queries.
+- **Fix tracked in:** _no ticket yet — file an issue and link here._
+
 **Discovered:** 2026-05-07 by the first run of `evals/runners/run_retrieval_evals`.
 
 **Symptom:** `python -m evals.runners.run_retrieval_evals` reports
@@ -78,6 +83,11 @@ investing in the refactor.
 
 ## Finding 003 — Orchestrator does not call `check_eligibility` on canonical intake (HIGH)
 
+- **Severity:** P1 — eligibility claims are produced from training data + RAG instead of the deterministic rules engine; outputs look fine but are ungrounded.
+- **Status:** open
+- **Repro:** `python -m evals.runners.run_conversation_evals --subset smoke --cost-cap 0` — case `conv_006` reports `eligibility_check: Agent never produced an eligibility result via check_eligibility`. Reproduces intermittently across runs at temperature 0.3.
+- **Fix tracked in:** _no ticket yet — file an issue and link here._
+
 **Discovered:** 2026-05-07, smoke conversation eval baseline (`conv_006`).
 
 **Symptom:** In the canonical multi-turn case (single mom, 2 kids, $28k, CA),
@@ -111,6 +121,11 @@ schema-validator that rejects responses citing programs without a corresponding
 
 ## Finding 004 — `intake_interview` drops fields the user clearly stated (HIGH)
 
+- **Severity:** P1 — without `household_size`, the rules engine can't compute FPL thresholds; income-based programs all evaluate as low-confidence/unknown.
+- **Status:** open
+- **Repro:** `python -m evals.runners.run_conversation_evals --subset smoke --cost-cap 0` — case `conv_006` reports `profile_check: household_size: expected 3, got None` despite the user explicitly saying "I live in California with my 2 kids".
+- **Fix tracked in:** _no ticket yet — file an issue and link here._
+
 **Discovered:** 2026-05-07, smoke conversation eval baseline (`conv_006`).
 
 **Symptom:** The user said: "I live in California with my 2 kids, ages 3 and
@@ -143,6 +158,11 @@ of replace).
 ---
 
 ## Finding 005 — Bedrock Anthropic use-case form not submitted (operator setup, not a bug)
+
+- **Severity:** P2 — operator setup; no judge layer until resolved, but deterministic baseline still works via `--cost-cap 0`.
+- **Status:** blocked on operator action
+- **Repro:** `python -m evals.runners.run_conversation_evals --subset smoke` (without `--cost-cap 0`) — judge invocation raises `JudgeAccessError` wrapping `ResourceNotFoundException: Model use case details have not been submitted for this account`.
+- **Fix tracked in:** _AWS Bedrock console → Model access → complete the Anthropic use-case form for this account._
 
 **Discovered:** 2026-05-07, first smoke conversation run with the LLM judge.
 
