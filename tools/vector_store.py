@@ -11,6 +11,7 @@ import json
 import logging
 import math
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -33,6 +34,37 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
     if mag_a == 0 or mag_b == 0:
         return 0.0
     return dot / (mag_a * mag_b)
+
+
+def _slugify(value: str) -> str:
+    """Lowercase, replace non-alphanumerics with '-', collapse runs of '-'."""
+    value = value.lower()
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    return value.strip("-")
+
+
+def _assign_chunk_ids(chunks: list[dict]) -> None:
+    """Mutate chunks in place, adding metadata['chunk_id'].
+
+    ID scheme: slugify(f"{source}:{program_id}:{title}").
+    On collision, disambiguate with a -0/-1/... suffix in load order.
+    Loud assertion at the end — duplicates should never escape.
+    """
+    seen: dict[str, int] = {}
+    for chunk in chunks:
+        meta = chunk["metadata"]
+        base = _slugify(f"{meta.get('source', 'unknown')}:{meta.get('program_id', 'unknown')}:{meta.get('title', 'untitled')}")
+        if base not in seen:
+            seen[base] = 0
+            chunk_id = base
+        else:
+            seen[base] += 1
+            chunk_id = f"{base}-{seen[base]}"
+        meta["chunk_id"] = chunk_id
+
+    ids = [c["metadata"]["chunk_id"] for c in chunks]
+    duplicates = {i for i in ids if ids.count(i) > 1}
+    assert not duplicates, f"Duplicate chunk_ids found: {duplicates}"
 
 
 def _load_chunks() -> list[dict]:
@@ -104,7 +136,17 @@ def _load_chunks() -> list[dict]:
                     },
                 })
 
+    _assign_chunk_ids(chunks)
     return chunks
+
+
+def load_all_chunks() -> list[dict]:
+    """Public wrapper around _load_chunks for eval tooling.
+
+    Returns the same chunks the embedder would index, with stable chunk_ids
+    already assigned in metadata. Does not generate embeddings or call Bedrock.
+    """
+    return _load_chunks()
 
 
 def initialize():
