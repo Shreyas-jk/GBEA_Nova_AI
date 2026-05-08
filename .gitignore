@@ -33,3 +33,10 @@ htmlcov/
 
 # Uploads
 /tmp/
+
+# Eval per-run JSON dumps and document fixtures (fixtures are user-supplied,
+# see evals/README.md). latest.md and history.jsonl are committed intentionally.
+evals/reports/smoke_*.json
+evals/reports/full_*.json
+evals/golden/fixtures/*
+!evals/golden/fixtures/.gitkeep

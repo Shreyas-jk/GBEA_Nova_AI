@@ -459,8 +459,9 @@ def _format_init_error(e: Exception) -> str:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", "8000"))
     print("=" * 60)
     print("  BenefitsNavigator Web UI")
-    print(f"  http://localhost:8000")
+    print(f"  http://localhost:{port}")
     print("=" * 60)
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=port)

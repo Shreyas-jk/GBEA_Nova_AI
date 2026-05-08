@@ -1,0 +1,298 @@
+[
+  {
+    "id": "ret_001",
+    "category": "eligibility_threshold",
+    "query": "How much can I make and still qualify for SNAP?",
+    "gold_chunk_ids": [
+      "program-details-snap-snap-eligibility",
+      "federal-programs-snap-supplemental-nutrition-assistance-program"
+    ],
+    "notes": "SNAP eligibility chunk discusses 130% FPL; federal summary lists income_limit_fpl_pct=130 in the embedded text path."
+  },
+  {
+    "id": "ret_002",
+    "category": "application_process",
+    "query": "Where do I apply for Medi-Cal in California?",
+    "gold_chunk_ids": [
+      "state-programs-medi-cal-medi-cal-california-medicaid",
+      "program-details-medicaid-medicaid-application-tips"
+    ],
+    "notes": "State summary references BenefitsCal; medicaid tips mention BenefitsCal.com and CoveredCA.com."
+  },
+  {
+    "id": "ret_003",
+    "category": "required_documents",
+    "query": "What documents do I need to apply for SNAP?",
+    "gold_chunk_ids": [
+      "program-details-snap-snap-application-tips",
+      "program-details-general-documents-to-gather-before-applying"
+    ],
+    "notes": "SNAP tips lists ID/income/address/SSN; general docs chunk is the umbrella reference."
+  },
+  {
+    "id": "ret_004",
+    "category": "eligibility_threshold",
+    "query": "What's the income limit for WIC?",
+    "gold_chunk_ids": [
+      "program-details-wic-wic-eligibility-and-application"
+    ],
+    "notes": "Single chunk explicitly states 185% FPL."
+  },
+  {
+    "id": "ret_005",
+    "category": "eligibility_threshold",
+    "query": "Who qualifies for CHIP?",
+    "gold_chunk_ids": [
+      "program-details-chip-chip-eligibility",
+      "program-details-chip-chip-overview"
+    ],
+    "notes": "Eligibility chunk has thresholds; overview chunk frames it (under 19, above Medicaid limit)."
+  },
+  {
+    "id": "ret_006",
+    "category": "ambiguous_intent",
+    "query": "I need help paying my heating bill",
+    "gold_chunk_ids": [
+      "program-details-liheap-liheap-overview",
+      "federal-programs-liheap-low-income-home-energy-assistance-program"
+    ],
+    "notes": "Semantic match — LIHEAP is the program for heating costs."
+  },
+  {
+    "id": "ret_007",
+    "category": "application_process",
+    "query": "How do I get on the Section 8 waitlist?",
+    "gold_chunk_ids": [
+      "program-details-section8-section-8-application-tips",
+      "program-details-section8-section-8-overview"
+    ],
+    "notes": "Application tips chunk explains waitlist mechanics."
+  },
+  {
+    "id": "ret_008",
+    "category": "program_definition",
+    "query": "What is the Earned Income Tax Credit?",
+    "gold_chunk_ids": [
+      "program-details-eitc-eitc-overview",
+      "federal-programs-eitc-earned-income-tax-credit"
+    ],
+    "notes": "Overview chunks for EITC."
+  },
+  {
+    "id": "ret_009",
+    "category": "program_comparison",
+    "query": "Can I claim both EITC and the Child Tax Credit on the same tax return?",
+    "gold_chunk_ids": [
+      "program-details-child-tax-credit-child-tax-credit-tips",
+      "program-details-eitc-eitc-application-tips"
+    ],
+    "notes": "CTC tips chunk explicitly says EITC + CTC stack."
+  },
+  {
+    "id": "ret_010",
+    "category": "ambiguous_intent",
+    "query": "I want help buying groceries",
+    "gold_chunk_ids": [
+      "federal-programs-snap-supplemental-nutrition-assistance-program",
+      "state-programs-calfresh-calfresh-california-snap",
+      "program-details-snap-snap-overview"
+    ],
+    "notes": "Pure-semantic test — 'groceries' should match SNAP/CalFresh chunks despite minimal keyword overlap."
+  },
+  {
+    "id": "ret_011",
+    "category": "edge_population",
+    "query": "Can undocumented immigrants get healthcare in California?",
+    "gold_chunk_ids": [
+      "state-programs-medi-cal-medi-cal-california-medicaid",
+      "program-details-general-benefits-for-immigrants"
+    ],
+    "notes": "Medi-Cal expanded regardless of immigration status; general immigrants chunk is the umbrella."
+  },
+  {
+    "id": "ret_012",
+    "category": "program_definition",
+    "query": "What is the Pell Grant?",
+    "gold_chunk_ids": [
+      "program-details-pell-grant-pell-grant-overview",
+      "federal-programs-pell-grant-federal-pell-grant"
+    ],
+    "notes": "Both overview chunks."
+  },
+  {
+    "id": "ret_013",
+    "category": "application_process",
+    "query": "How do I apply for federal student aid?",
+    "gold_chunk_ids": [
+      "program-details-pell-grant-pell-grant-application-tips"
+    ],
+    "notes": "Tips chunk explains FAFSA process specifically."
+  },
+  {
+    "id": "ret_014",
+    "category": "ambiguous_intent",
+    "query": "I'm 65 and need monthly cash help",
+    "gold_chunk_ids": [
+      "federal-programs-ssi-supplemental-security-income",
+      "program-details-ssi-ssi-overview"
+    ],
+    "notes": "SSI is for 65+, blind, or disabled."
+  },
+  {
+    "id": "ret_015",
+    "category": "application_process",
+    "query": "How do I apply for SSI disability?",
+    "gold_chunk_ids": [
+      "program-details-ssi-ssi-application-tips",
+      "program-details-ssi-ssi-overview"
+    ],
+    "notes": "Application tips chunk has SSA phone number and process."
+  },
+  {
+    "id": "ret_016",
+    "category": "program_comparison",
+    "query": "What's the difference between Medicaid and Medi-Cal?",
+    "gold_chunk_ids": [
+      "state-programs-medi-cal-medi-cal-california-medicaid",
+      "federal-programs-medicaid-medicaid"
+    ],
+    "notes": "Comparison requires both summaries — Medi-Cal is California's Medicaid implementation."
+  },
+  {
+    "id": "ret_017",
+    "category": "appeals_process",
+    "query": "I was denied benefits. What can I do?",
+    "gold_chunk_ids": [
+      "program-details-general-what-if-you-re-denied-benefits"
+    ],
+    "notes": "Single dedicated chunk for denial/appeal process."
+  },
+  {
+    "id": "ret_018",
+    "category": "ambiguous_intent",
+    "query": "I can't afford my phone bill, is there any help?",
+    "gold_chunk_ids": [
+      "program-details-lifeline-lifeline-overview",
+      "federal-programs-lifeline-lifeline-phone-internet-discount"
+    ],
+    "notes": "Lifeline phone discount."
+  },
+  {
+    "id": "ret_019",
+    "category": "eligibility_threshold",
+    "query": "Do I automatically qualify for Lifeline if I get SNAP?",
+    "gold_chunk_ids": [
+      "program-details-lifeline-lifeline-eligibility"
+    ],
+    "notes": "Eligibility chunk explicitly lists SNAP/Medicaid/SSI as auto-qualifying programs."
+  },
+  {
+    "id": "ret_020",
+    "category": "general_resource",
+    "query": "Where can I find a food bank near me?",
+    "gold_chunk_ids": [
+      "program-details-general-how-to-find-help-211"
+    ],
+    "notes": "211 is the umbrella resource chunk for food banks/shelter/etc."
+  },
+  {
+    "id": "ret_021",
+    "category": "program_definition",
+    "query": "What is TANF cash assistance?",
+    "gold_chunk_ids": [
+      "program-details-tanf-tanf-overview",
+      "federal-programs-tanf-temporary-assistance-for-needy-families"
+    ],
+    "notes": "Both TANF overview chunks."
+  },
+  {
+    "id": "ret_022",
+    "category": "eligibility_threshold",
+    "query": "What are the work requirements for TANF?",
+    "gold_chunk_ids": [
+      "program-details-tanf-tanf-application-tips"
+    ],
+    "notes": "Application tips chunk discusses work activity requirements."
+  },
+  {
+    "id": "ret_023",
+    "category": "required_documents",
+    "query": "What documents should I gather before applying for any benefit?",
+    "gold_chunk_ids": [
+      "program-details-general-documents-to-gather-before-applying"
+    ],
+    "notes": "The dedicated general documents chunk."
+  },
+  {
+    "id": "ret_024",
+    "category": "ambiguous_intent",
+    "query": "Help with energy bills in California",
+    "gold_chunk_ids": [
+      "state-programs-care-california-alternate-rates-for-energy-care",
+      "federal-programs-liheap-low-income-home-energy-assistance-program",
+      "program-details-liheap-liheap-overview"
+    ],
+    "notes": "CARE is CA-specific energy discount; LIHEAP is the federal program."
+  },
+  {
+    "id": "ret_025",
+    "category": "edge_population",
+    "query": "I'm an elderly non-citizen in California, what cash assistance is available?",
+    "gold_chunk_ids": [
+      "state-programs-capi-cash-assistance-program-for-immigrants-capi",
+      "program-details-general-benefits-for-immigrants"
+    ],
+    "notes": "CAPI fills the SSI gap for non-citizen elderly/disabled in CA."
+  },
+  {
+    "id": "ret_026",
+    "category": "program_comparison",
+    "query": "If I'm on Medicaid, do I automatically get SNAP?",
+    "gold_chunk_ids": [
+      "program-details-medicaid-medicaid-and-other-programs",
+      "state-programs-calfresh-calfresh-california-snap"
+    ],
+    "notes": "Medicaid 'and other programs' chunk discusses categorical eligibility; CalFresh summary mentions broad-based categorical eligibility."
+  },
+  {
+    "id": "ret_027",
+    "category": "edge_population",
+    "query": "Common mistakes that disqualify people from EITC",
+    "gold_chunk_ids": [
+      "program-details-eitc-eitc-common-mistakes",
+      "program-details-eitc-eitc-application-tips"
+    ],
+    "notes": "Common-mistakes chunk is the dedicated answer; tips chunk is secondary."
+  },
+  {
+    "id": "ret_028",
+    "category": "application_process",
+    "query": "Can I apply for SNAP online?",
+    "gold_chunk_ids": [
+      "program-details-snap-snap-application-tips"
+    ],
+    "notes": "Application tips chunk is the canonical answer (mentions BenefitsCal, ACCESS Florida, etc.)."
+  },
+  {
+    "id": "ret_029",
+    "category": "eligibility_threshold",
+    "query": "At what age does my child stop qualifying for WIC?",
+    "gold_chunk_ids": [
+      "program-details-wic-wic-tips",
+      "program-details-wic-wic-overview",
+      "program-details-wic-wic-eligibility-and-application"
+    ],
+    "notes": "WIC tips chunk explicitly says 'children age out at their 5th birthday'; overview/eligibility chunks reinforce."
+  },
+  {
+    "id": "ret_030",
+    "category": "ambiguous_intent",
+    "query": "I'm pregnant and don't have a lot of money",
+    "gold_chunk_ids": [
+      "program-details-wic-wic-overview",
+      "program-details-wic-wic-eligibility-and-application",
+      "federal-programs-wic-women-infants-and-children-program"
+    ],
+    "notes": "WIC is the canonical program for low-income pregnant women."
+  }
+]
