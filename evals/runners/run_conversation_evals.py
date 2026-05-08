@@ -144,12 +144,17 @@ def _check_extracted_profile(profile_data: dict | None, expectations: dict) -> d
     }
 
 
-def _eligible_set(eligibility_data: dict | None) -> set[str]:
-    """Flatten likely+possibly into a lowercase short_name set."""
+def _eligible_set(eligibility_data: dict | None, *, only_high_confidence: bool = False) -> set[str]:
+    """Flatten eligibility groups into a lowercase short_name set.
+
+    only_high_confidence=True restricts to likely_eligible only — used for the
+    must_exclude check where low-confidence "possibly" hedges are acceptable.
+    """
     if not eligibility_data:
         return set()
+    keys = ("likely_eligible",) if only_high_confidence else ("likely_eligible", "possibly_eligible")
     names: set[str] = set()
-    for key in ("likely_eligible", "possibly_eligible"):
+    for key in keys:
         for entry in eligibility_data.get(key, []):
             names.add((entry.get("short_name") or entry.get("program_name") or "").lower())
     return names
@@ -167,14 +172,18 @@ def _check_eligibility_membership(
             "passed": False,
             "detail": "Agent never produced an eligibility result via check_eligibility",
         }
-    eligible = _eligible_set(eligibility_data)
-    missing_includes = [p for p in (must_include or []) if p.lower() not in eligible]
-    leaked_excludes = [p for p in (must_exclude or []) if p.lower() in eligible]
+    # Asymmetric: must_include checks both buckets (we want the agent to surface
+    # these at all). must_exclude only flags HIGH-confidence claims — a
+    # low-confidence "possibly" hedge from the rules engine is acceptable.
+    inclusive_set = _eligible_set(eligibility_data, only_high_confidence=False)
+    high_conf_set = _eligible_set(eligibility_data, only_high_confidence=True)
+    missing_includes = [p for p in (must_include or []) if p.lower() not in inclusive_set]
+    leaked_excludes = [p for p in (must_exclude or []) if p.lower() in high_conf_set]
     detail_parts = []
     if missing_includes:
         detail_parts.append(f"missing required programs: {missing_includes}")
     if leaked_excludes:
-        detail_parts.append(f"included programs that should be excluded: {leaked_excludes}")
+        detail_parts.append(f"high-confidence-eligible programs that should be excluded: {leaked_excludes}")
     return {
         "passed": not (missing_includes or leaked_excludes),
         "detail": "; ".join(detail_parts) if detail_parts else "",
@@ -266,10 +275,21 @@ def run_one_case(case: dict, cost_cap: int | None = None) -> dict:
             result["judge_error"] = str(e)
             result["judge_overall_pass"] = False
 
-    judge_pass = judge_verdict.overall_pass if judge_verdict is not None else False
+    # Three states for the judge contribution to overall pass:
+    #   verdict present  → use overall_pass
+    #   intentionally skipped (cost cap) → don't fail the case on absent judge
+    #   errored without verdict → fail (we lost a real signal)
+    if judge_verdict is not None:
+        judge_pass = judge_verdict.overall_pass
+    elif result.get("judge_skipped_cost_cap"):
+        judge_pass = True
+    else:
+        judge_pass = False
+
     result["passed"] = bool(
         deterministic_pass and profile_pass and eligibility_pass and tool_pass and judge_pass
     )
+    result["deterministic_passed"] = deterministic_pass and profile_pass and eligibility_pass and tool_pass
     return result
 
 

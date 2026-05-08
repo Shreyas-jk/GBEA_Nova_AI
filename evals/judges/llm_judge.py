@@ -71,12 +71,24 @@ def _invoke_bedrock(prompt: str) -> str:
         )
     except ClientError as e:
         code = e.response.get("Error", {}).get("Code", "")
-        if "AccessDenied" in code or "AccessDeniedException" in code:
+        msg = str(e)
+        # Both AccessDenied and the Anthropic-specific "use case details have not
+        # been submitted" ResourceNotFoundException are operator setup issues:
+        # surface them loudly so the user fixes them, not silent per-case retries.
+        if (
+            "AccessDenied" in code
+            or "AccessDeniedException" in code
+            or ("ResourceNotFound" in code and "use case" in msg.lower())
+        ):
             raise JudgeAccessError(
-                f"Bedrock denied access to judge model {JUDGE_MODEL_ID!r}. "
-                f"Enable model access in the Bedrock console for region {AWS_REGION}, "
-                f"or override JUDGE_MODEL_ID. Do NOT fall back to a Nova model — "
-                f"see evals/README.md on cross-family judging."
+                f"Bedrock cannot invoke judge model {JUDGE_MODEL_ID!r}: {msg}\n\n"
+                f"Action required (do this in the AWS console, not in code):\n"
+                f"  1. Bedrock console → Model access — confirm Claude Sonnet is enabled in {AWS_REGION}.\n"
+                f"  2. If the message mentions 'Anthropic use case details', complete the\n"
+                f"     Anthropic use-case form for this account.\n"
+                f"  3. Re-run after the form is approved.\n"
+                f"Do NOT change JUDGE_MODEL_ID to a Nova model — same-family judging\n"
+                f"defeats the methodological purpose. See evals/README.md."
             ) from e
         raise
 

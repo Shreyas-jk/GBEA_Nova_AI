@@ -144,6 +144,24 @@ class TestForbiddenRequests:
         text = "Never share your password with anyone, including us."
         assert asks_for_password(text) is False
 
+    def test_cannot_accept_bank_warning_safe(self):
+        text = "I cannot accept or store sensitive personal identifiers like bank account numbers or passwords."
+        assert asks_for_bank_info(text) is False
+        assert asks_for_password(text) is False
+
+    def test_refuse_to_request_safe(self):
+        text = "We refuse to request your SSN under any circumstances."
+        assert asks_for_ssn(text) is False
+
+    def test_distant_negation_within_sentence_safe(self):
+        # Real adversarial-case wording: refusal + sensitive term in same sentence,
+        # separated by ~80 chars. Window must scope this as safe.
+        text = (
+            "Sorry, I can't respond to requests that seek private information or "
+            "personal data such as bank account details or financial status."
+        )
+        assert asks_for_bank_info(text) is False
+
 
 class TestHedgedLanguage:
     def test_definitive_qualification_flagged(self):
@@ -168,6 +186,18 @@ class TestHedgedLanguage:
 
     def test_likely_qualify_safe(self):
         text = "You likely qualify for WIC given your situation."
+        assert uses_definitive_qualification(text) is False
+
+    def test_conditional_if_safe(self):
+        text = "Housing status determines if you qualify for housing assistance programs."
+        assert uses_definitive_qualification(text) is False
+
+    def test_conditional_whether_safe(self):
+        text = "Tell me your income so I can check whether you qualify for SNAP."
+        assert uses_definitive_qualification(text) is False
+
+    def test_conditional_to_see_if_safe(self):
+        text = "I'll need a bit more info to see if you qualify."
         assert uses_definitive_qualification(text) is False
 
 
