@@ -278,3 +278,99 @@ class TestGoldSetIntegrity:
             for turn in case["conversation"]:
                 assert turn.get("role") == "user", f"{case['id']}: only user turns are allowed in golden conversations"
                 assert "content" in turn
+
+
+# ---------------------------------------------------------------------------
+# Judge rubric — pure-function behavior, no Bedrock call
+# ---------------------------------------------------------------------------
+
+from evals.judges.rubric import (
+    DIMENSIONS,
+    DimensionScores,
+    JudgeVerdict,
+    build_judge_prompt,
+)
+
+
+class TestJudgeVerdict:
+    def _verdict(self, **score_overrides) -> JudgeVerdict:
+        scores = {"accuracy": 5, "safety": 5, "helpfulness": 5, "tone": 5, "grounding": 5}
+        scores.update(score_overrides)
+        return JudgeVerdict(
+            scores=DimensionScores(**scores),
+            justifications={d: "ok" for d in DIMENSIONS},
+            overall_pass=True,
+        )
+
+    def test_recompute_pass_keeps_all_5(self):
+        v = self._verdict()
+        assert v.recompute_pass().overall_pass is True
+
+    def test_recompute_pass_flips_when_any_dim_at_2(self):
+        v = self._verdict(safety=2)
+        assert v.recompute_pass().overall_pass is False
+
+    def test_recompute_pass_flips_when_any_dim_at_1(self):
+        v = self._verdict(accuracy=1)
+        assert v.recompute_pass().overall_pass is False
+
+    def test_recompute_pass_3s_still_pass(self):
+        # Threshold is "<= 2 fails". A 3 across the board is mediocre but not failing.
+        v = self._verdict(accuracy=3, safety=3, helpfulness=3, tone=3, grounding=3)
+        assert v.recompute_pass().overall_pass is True
+
+    def test_recompute_pass_corrects_judge_lying_yes(self):
+        # Judge said pass=True but a 1 is present; recompute fixes it.
+        bad = JudgeVerdict(
+            scores=DimensionScores(accuracy=1, safety=5, helpfulness=5, tone=5, grounding=5),
+            justifications={d: "ok" for d in DIMENSIONS},
+            overall_pass=True,
+        )
+        assert bad.recompute_pass().overall_pass is False
+
+    def test_missing_justification_fails_validation(self):
+        with pytest.raises(Exception):
+            JudgeVerdict(
+                scores=DimensionScores(accuracy=5, safety=5, helpfulness=5, tone=5, grounding=5),
+                justifications={"accuracy": "ok"},
+                overall_pass=True,
+            )
+
+    def test_score_out_of_range_fails(self):
+        with pytest.raises(Exception):
+            DimensionScores(accuracy=6, safety=5, helpfulness=5, tone=5, grounding=5)
+
+
+class TestJudgePrompt:
+    def test_prompt_contains_rubric_dimensions(self):
+        prompt = build_judge_prompt(
+            conversation=[{"role": "user", "content": "Hi"}],
+            expectations={"must_use_hedged_language": True},
+            agent_response="Hello!",
+        )
+        for dim in DIMENSIONS:
+            assert dim in prompt
+
+    def test_prompt_contains_expectations_as_json(self):
+        prompt = build_judge_prompt(
+            conversation=[{"role": "user", "content": "Hi"}],
+            expectations={"flag": "value-12345"},
+            agent_response="Hello!",
+        )
+        assert "value-12345" in prompt
+
+    def test_prompt_contains_agent_response_verbatim(self):
+        prompt = build_judge_prompt(
+            conversation=[{"role": "user", "content": "Hi"}],
+            expectations={},
+            agent_response="UNIQUE_RESPONSE_TOKEN_42",
+        )
+        assert "UNIQUE_RESPONSE_TOKEN_42" in prompt
+
+    def test_prompt_includes_attached_document_marker(self):
+        prompt = build_judge_prompt(
+            conversation=[{"role": "user", "content": "Here", "attached_document": "paystub.pdf"}],
+            expectations={},
+            agent_response="ok",
+        )
+        assert "paystub.pdf" in prompt

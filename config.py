@@ -9,6 +9,16 @@ THINKING_EFFORT = os.environ.get("THINKING_EFFORT", "medium")
 TEMPERATURE = 0.3
 MAX_TOKENS = 4096
 
+# Eval harness — judge model
+# Cross-family judging is methodologically required: Nova-judging-Nova shares
+# training-data blind spots and silently weakens the eval signal. Default is
+# the current Claude Sonnet on Bedrock; swap by changing this constant or
+# overriding the JUDGE_MODEL_ID env var. Never default to a Nova model.
+JUDGE_MODEL_ID_DEFAULT = "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+JUDGE_MODEL_ID = os.environ.get("JUDGE_MODEL_ID", JUDGE_MODEL_ID_DEFAULT)
+JUDGE_TEMPERATURE = 0.0
+JUDGE_MAX_TOKENS = 1024
+
 # 2025 Federal Poverty Level (FPL) table — annual income thresholds
 FPL_BASE = {
     1: 15_650,
